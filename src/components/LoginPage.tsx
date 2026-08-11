@@ -65,14 +65,25 @@ export default function LoginPage({ setIsLoggedIn, setActiveTab, addToast }: Log
 
   // Check for Supabase auth state on mount
   useEffect(() => {
-    // Check if user is already logged in
-    getCurrentUser().then(({ user, error }) => {
-      if (user && !error) {
-        setIsLoggedIn(true);
-        addToast(`Welcome back, ${user.email}!`);
-        setActiveTab('dashboard');
+    // Only check if not already trying to login/logout
+    const checkAuth = async () => {
+      try {
+        const { user, error } = await getCurrentUser();
+        
+        // Only auto-login if user exists and no error
+        if (user && !error) {
+          setIsLoggedIn(true);
+          addToast(`Welcome back, ${user.email}!`);
+          setActiveTab('dashboard');
+        }
+      } catch (err) {
+        // User not logged in, stay on login page
+        console.log('No active session');
       }
-    });
+    };
+
+    // Only check on initial mount, not on every render
+    checkAuth();
 
     // Also check for OAuth callback success (legacy support)
     const urlParams = new URLSearchParams(window.location.search);
@@ -91,7 +102,9 @@ export default function LoginPage({ setIsLoggedIn, setActiveTab, addToast }: Log
           console.error('Failed to fetch user:', err);
         });
     }
-  }, [setIsLoggedIn, setActiveTab, addToast]);
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Run only once on mount
 
   const handleAadharChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError('');

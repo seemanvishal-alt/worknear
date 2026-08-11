@@ -1302,7 +1302,12 @@ this storage document offline, isolated, and encrypted at all times.
           setActiveTab('login');
         }}
         isLoggedIn={isLoggedIn}
-        onLogout={() => {
+        onLogout={async () => {
+          // Sign out from Supabase
+          const { signOut } = await import('./lib/supabase');
+          await signOut();
+          
+          // Clear local state
           setIsLoggedIn(false);
           setActiveTab('login');
           addToast('Platform session closed safely.');
