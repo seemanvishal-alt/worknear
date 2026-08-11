@@ -37,7 +37,8 @@ export default function AboutPage() {
       bio: 'Seeman is the project lead of WorkNear\'s cognitive AI matching system, specialized in transformer-based semantic search algorithms, secure identity structures, and scalable multi-region microservices. As the sole development head, Seeman ensures the platform remains high-performing, secure, and visually flawless.',
       skills: ['Cognitive AI Systems', 'Distributed Databases', 'Full-Stack React Architecture', 'Infrastructure Optimization', 'Sovereign EOR Compliance'],
       avatarInitials: 'S',
-      avatarBg: 'bg-blue-600',
+      avatarBg: 'bg-gradient-to-br from-blue-600 to-indigo-700',
+      imageUrl: '/assets/profile.jpeg',
       tagline: 'Empowering the high-dimensional workforce.',
       links: {
         linkedin: 'https://www.linkedin.com/in/seeman-p-3b5468380?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
@@ -120,7 +121,7 @@ export default function AboutPage() {
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: idx * 0.15 + 0.2, type: "spring" }}
-                      className="h-16 w-16 rounded-2xl overflow-hidden shrink-0 shadow-lg border border-slate-100 bg-slate-100 flex items-center justify-center relative group"
+                      className="h-24 w-24 rounded-2xl overflow-hidden shrink-0 shadow-xl border-2 border-blue-200 bg-slate-100 flex items-center justify-center relative group"
                     >
                       <img 
                         src={member.imageUrl} 
@@ -134,7 +135,7 @@ export default function AboutPage() {
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: idx * 0.15 + 0.2, type: "spring" }}
-                      className={`h-16 w-16 rounded-2xl ${member.avatarBg} text-white font-black text-xl flex items-center justify-center shrink-0 shadow-md shadow-blue-600/10`}
+                      className={`h-24 w-24 rounded-2xl ${member.avatarBg} text-white font-black text-3xl flex items-center justify-center shrink-0 shadow-xl shadow-blue-600/20`}
                     >
                       {member.avatarInitials}
                     </motion.div>
