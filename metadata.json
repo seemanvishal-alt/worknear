@@ -1,0 +1,6 @@
+{
+  "name": "seeman",
+  "description": "High-dimensional semantic AI workforce matching for elite technology teams.",
+  "requestFramePermissions": ["camera", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
